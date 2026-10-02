@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Peace Media — Privacy Policy and Terms of Use</title>
+<style>
+/* Layout: one reading column, plain legal-document treatment. */
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --ink:#1a2130; --muted:#5a6375; --line:#dde1e8; --accent:#2f5bd3;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#12151c;--surface:#1a1f29;--ink:#e4e8f0;--muted:#98a1b3;--line:#2e3544;--accent:#7ea2ff;}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12151c;--surface:#1a1f29;--ink:#e4e8f0;--muted:#98a1b3;--line:#2e3544;--accent:#7ea2ff;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.7;padding-inline:16px}
+main{max-width:46rem;margin:0 auto;padding-block:40px 64px}
+h1{font-size:28px;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+h2{font-size:19px;margin:34px 0 8px;text-wrap:balance}
+p,li{margin:0 0 10px}
+ul{padding-left:22px;margin:0 0 10px}
+.meta{color:var(--muted);font-size:14px;margin-bottom:22px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:14px 0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+.tbl{overflow-x:auto;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px}
+</style>
+</head><body>
+<main>
+<h1>Privacy Policy and Terms of Use</h1>
+<p class="meta">Peace Media publishing tool · Effective October 1, 2026</p>
+
+<div class="box">
+<p><strong>In short:</strong> this is a private tool we use to publish videos to <strong>our own</strong> YouTube channels. It uses the YouTube API Services only for those channels. It does not collect information about YouTube viewers, does not access anyone else's channel, and does not sell or share data for advertising.</p>
+</div>
+
+<h2>1. Who we are and what the tool is</h2>
+<p>Peace Media operates the YouTube channel <strong>Peace AI Briefing</strong> (@PeaceAIBriefing), which explains new AI research papers and AI industry news, and is preparing a second channel about Canadian housing and mortgage rates. We built an internal tool (the "API Client") that prepares our videos and publishes them to these channels. The tool is used only by our team and is not offered to anyone else.</p>
+<p>Videos are produced with AI assistance. Before publication, every video must pass an originality check against our earlier videos, daily videos are fact-checked against their sources, and new formats are approved by a person video by video. Each video's description links its sources and states that AI assistance was used.</p>
+
+<h2>2. YouTube API Services</h2>
+<p>The API Client uses YouTube API Services. By using it, users agree to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google's handling of data is described in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+
+<h2>3. What information the tool accesses</h2>
+<p>Only data of the YouTube channels we own, after we sign in and grant access through Google's OAuth consent screen:</p>
+<div class="tbl"><table>
+<thead><tr><th>Through</th><th>What</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>YouTube Data API</td><td>Upload our videos; set their thumbnails; create our playlists and add our videos to them; upload subtitle tracks; read the status and public statistics (views, likes) of our own videos</td><td>To publish and organise our videos</td></tr>
+<tr><td>YouTube Analytics API</td><td>Aggregated reports about our own channels: views, watch time, average percentage viewed, audience retention, traffic sources, countries, subscribers gained</td><td>To learn which of our formats viewers find useful</td></tr>
+</tbody></table></div>
+<p>The tool does <strong>not</strong> access other creators' channels, comments, private messages, or any personal information about individual viewers. YouTube Analytics reports are aggregated and do not identify viewers.</p>
+
+<h2>4. What we store</h2>
+<ul>
+<li>For our own videos: video IDs and links, titles, scripts, publishing records, playlist IDs.</li>
+<li>Aggregated analytics reports about our own channels.</li>
+<li>OAuth tokens that let the tool act for our channels.</li>
+</ul>
+<p>All of this is stored on a computer operated by our team. It is not published or sold.</p>
+
+<h2>5. How information is used and shared</h2>
+<ul>
+<li>Information is used only to publish our videos and to improve them.</li>
+<li>We use Anthropic's Claude API to draft scripts from public sources and to summarise our own channels' aggregated statistics into internal reports. These requests contain our own content and aggregated statistics only, no viewer information. See <a href="https://www.anthropic.com/legal/privacy">Anthropic's Privacy Policy</a>.</li>
+<li>We do not share information with any other third party, and we do not use it for advertising.</li>
+</ul>
+
+<h2>6. Retention and deletion</h2>
+<ul>
+<li>We keep information obtained through YouTube API Services only while our authorization for the channel is valid.</li>
+<li>If authorization for a channel is revoked, or can no longer be refreshed, we delete the YouTube API data stored for that channel within 7 days.</li>
+<li>Access can be revoked at any time on Google's security settings page: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+</ul>
+
+<h2>7. Security</h2>
+<p>Credentials and OAuth tokens are stored only on the operating computer, are excluded from any shared copies of the code, and are never sent anywhere other than Google's authentication servers.</p>
+
+<h2>8. Terms of Use</h2>
+<ul>
+<li>The API Client is an internal tool for publishing to channels owned by Peace Media. It is not available to the public.</li>
+<li>Anyone using it agrees to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and to follow the YouTube API Services Terms and Developer Policies.</li>
+<li>Our videos are provided for information and education only and are not financial, legal or investment advice.</li>
+</ul>
+
+<h2>9. Changes and contact</h2>
+<p>We will update this page when the tool's use of data changes, and show the new effective date above.</p>
+<p>Questions or requests: <a href="mailto:peace2reel@gmail.com">peace2reel@gmail.com</a></p>
+</main>
+</body></html>
