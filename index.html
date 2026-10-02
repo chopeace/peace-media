@@ -1,17 +1,104 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peace Media</title>
-<style>
-:root{--bg:#f7f8fa;--ink:#1a2130;--muted:#5a6375;--accent:#2f5bd3;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-@media (prefers-color-scheme: dark){:root{color-scheme:dark;--bg:#12151c;--ink:#e4e8f0;--muted:#98a1b3;--accent:#7ea2ff}}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;margin:0;padding:0 16px}
-main{max-width:40rem;margin:0 auto;padding:56px 0}
-h1{font-size:30px;margin:0 0 8px}
-p{margin:0 0 12px} a{color:var(--accent)} .muted{color:var(--muted);font-size:14px}
-</style></head><body><main>
-<h1>Peace Media</h1>
-<p>We make short explainer videos on YouTube. <a href="https://www.youtube.com/@PeaceAIBriefing">Peace AI Briefing</a> explains new AI research papers and AI industry news; a second channel on Canadian housing and mortgage rates is in preparation.</p>
-<p>Our videos are made with AI assistance and published through our own internal tool, which uses the YouTube API Services only for the channels we own.</p>
-<p><strong>Watch on YouTube:</strong> <a href="https://www.youtube.com/@PeaceAIBriefing">Peace AI Briefing on YouTube</a></p>
-<p>Our publishing tool uses the <strong>YouTube API Services</strong>. See our <a href="privacy.html">Privacy Policy and Terms of Use</a>, the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
-<p class="muted">Contact: <a href="mailto:peace2reel@gmail.com">peace2reel@gmail.com</a></p>
-</main></body></html>
+<title>Peace Media — AI explainers from an agentic pipeline</title>
+<meta name="description" content="Peace Media makes fact-checked AI explainer videos on YouTube with an autonomous, agentic pipeline built by Peace Cho.">
+<meta property="og:title" content="Peace Media — AI explainers from an agentic pipeline">
+<meta property="og:description" content="New AI papers in, fact-checked explainer videos out — LangGraph agents, a custom avatar engine and an analytics feedback loop.">
+<meta property="og:image" content="https://chopeace.github.io/peace-media/architecture-thumb.png">
+<link rel="stylesheet" href="style.css">
+</head><body><div class="wrap">
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="./">Peace<span>Media</span></a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">AI explainer studio</span>
+  <h1>Fact-checked AI explainers, made by an agentic pipeline.</h1>
+  <p class="lede">New AI research papers in, short explainer videos out — written with LangGraph agents, checked against their sources, presented by a custom-built avatar and improved by their own analytics.</p>
+  <div class="cta">
+    <a class="btn yt" href="https://www.youtube.com/@PeaceAIBriefing">
+      <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" rx="4" fill="#fff"/><path d="M9 4.5v7l6-3.5z" fill="#e62117"/></svg>
+      Watch Peace AI Briefing on YouTube</a>
+    <a class="btn" href="architecture.html">See the architecture →</a>
+  </div>
+</header>
+
+<div class="stats" role="list">
+  <div class="stat" role="listitem"><b>81</b><span>videos in 15 days</span></div>
+  <div class="stat" role="listitem"><b>4</b><span>video formats</span></div>
+  <div class="stat" role="listitem"><b>6</b><span>languages (5 subtitle tracks)</span></div>
+  <div class="stat" role="listitem"><b>$0</b><span>avatar cost — built in-house</span></div>
+</div>
+
+<section id="work">
+  <h2>Architecture design</h2>
+  <p class="sub">One page that shows how the system works, from paper to published video and back.</p>
+  <a class="feature" href="architecture.html">
+    <div class="shot"><img src="architecture-thumb.png" alt="Architecture diagram of the AI Research Briefing pipeline" width="1200" height="880" loading="lazy"></div>
+    <div class="body">
+      <h3>AI Research Briefing pipeline</h3>
+      <p>Sources → ranking → LangGraph script agent (rewrite loop, fact-check, human approval) → render → publish, with a custom avatar engine and an analytics agent that feeds what viewers do back into the next scripts.</p>
+      <span class="more">Open the architecture →</span>
+    </div>
+  </a>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <p class="sub">Three parts I designed and built, each doing one job.</p>
+  <div class="cards">
+    <div class="card"><div class="ic" aria-hidden="true">✦</div><h3>Agentic scripting</h3>
+      <p>A LangGraph agent writes each script, rewrites it when a policy gate fails, fact-checks claims against the paper's text and figures, and pauses for human approval on new formats.</p></div>
+    <div class="card"><div class="ic" aria-hidden="true">◐</div><h3>Custom avatar engine</h3>
+      <p>An original anchor character drawn in code. Mouth shapes follow the real audio, it blinks, and it is layered into the video as a transparent overlay — no paid avatar service.</p></div>
+    <div class="card"><div class="ic" aria-hidden="true">↺</div><h3>Analytics loop</h3>
+      <p>An analytics agent lines up YouTube retention with each spoken sentence. Findings become rules: a short second sentence held viewers far better (median drop 0.21 vs 0.59), so scripts now keep it under 20 words.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Channels</h2>
+  <p class="sub">Each channel is its own product, with its own audience and sources.</p>
+  <div class="chan">
+    <div class="card"><span class="tag live">Live</span><h3>Peace AI Briefing</h3>
+      <p>New AI research papers and AI industry news, explained in Shorts and a weekly long-form recap, with subtitles in Korean, Japanese, Chinese, Spanish and German.</p>
+      <p style="margin-top:12px"><a href="https://www.youtube.com/@PeaceAIBriefing">youtube.com/@PeaceAIBriefing</a></p></div>
+    <div class="card"><span class="tag soon">In preparation</span><h3>Canadian housing &amp; mortgage rates</h3>
+      <p>Rate decisions and housing-market data for home buyers and owners, explained with our own charts built from official public data.</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="profile">
+    <div class="avatar" aria-hidden="true">PC</div>
+    <div>
+      <h3>Peace Cho</h3>
+      <p class="role">Software engineer · iOS → applied AI</p>
+      <ul>
+        <li>Designed and runs the agentic pipeline behind Peace Media — agents, avatar engine, analytics.</li>
+        <li>iOS and watchOS apps with on-device and local AI (Swift, SwiftUI, whisper.cpp, Ollama).</li>
+        <li>LLM fine-tuning: Qwen2.5 with QLoRA for news-style research briefings.</li>
+        <li>Earlier: Bosch Research (Palo Alto), ATR (Kyoto); B.Sc. Computing Science, Simon Fraser University.</li>
+      </ul>
+      <div class="links">
+        <a href="https://github.com/chopeace">GitHub</a>
+        <a href="https://huggingface.co/chopeace">Hugging Face</a>
+        <a href="mailto:peace2reel@gmail.com">peace2reel@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Videos are made with AI assistance and published through our own internal tool, which uses the <strong>YouTube API Services</strong> only for the channels we own.</p>
+  <p><a href="privacy.html">Privacy Policy and Terms of Use</a> · <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> · <a href="https://policies.google.com/privacy">Google Privacy Policy</a></p>
+  <p>© 2026 Peace Media · Contact: <a href="mailto:peace2reel@gmail.com">peace2reel@gmail.com</a></p>
+</footer>
+</div></body></html>
