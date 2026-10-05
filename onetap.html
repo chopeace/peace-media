@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OneTap Notes | Peace Media</title>
+<meta name="description" content="Architecture of OneTap Notes: a domain-adapted, multilingual voice-notes pipeline with speaker diarization, a phonetic verifier and an evaluation harness.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* The diagram is a fixed light plate on a dark frame, the same in both themes, like an image. */
+.figure.svgfig{overflow-x:auto;border-radius:18px}
+.figure.svgfig svg{display:block;width:100%;min-width:880px;height:auto}
+.svgfig{--d-frame:#1c1f26;--d-plate:#f7f8fb;--d-ink:#1b1e27;--d-quiet:#5d6474;--d-box:#ffffff;--d-edge:#d3d7e1;
+  --d-purple:#5b45d6;--d-purple-tint:#efecfd;--d-orange:#b4610f;--d-orange-tint:#fdf0e1;--d-orange-edge:#efc58f;
+  --d-green:#1b7f4b;--d-green-tint:#e6f5ec;--d-red:#d0392f;--d-dark:#1f2330}
+</style>
+</head><body><div class="wrap">
+<nav class="nav" id="site-nav" aria-label="Main">
+  <a class="brand" href="./">Peace<span>Media</span></a>
+  <ul><li><a href="ai-briefing.html">Peace AI Briefing</a></li><li><a href="onetap.html">OneTap Notes</a></li><li><a href="./#about">About</a></li><li><a href="privacy.html">Privacy</a></li></ul>
+</nav>
+<script src="nav.js"></script>
+
+<header class="arch-head">
+  <span class="eyebrow">Project · Pre-launch</span>
+  <h1>OneTap Notes</h1>
+  <p class="lede">One tap records a meeting. About a minute later a speaker-attributed summary and a translation into the listener's language arrive by email, on iPhone, Android, Wear OS and the web. Korean and Chinese recordings pass through a domain-adapted recognition stage built from recent ASR research.</p>
+  <h2 style="margin-top:28px">Architecture</h2>
+</header>
+
+<figure class="figure svgfig">
+<svg viewBox="0 0 1100 840" role="img" aria-label="Architecture diagram: capture and preprocessing feed a domain-adapted ASR stage with contextual biasing, Soniox recognition and diarization, phonetic correction and LLM correction checked by a phonetic verifier; then notes and translation, then delivery by email. An evaluation harness scores every engine and feeds learnings back into the ASR stage." font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--d-ink)"/></marker>
+    <marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--d-purple)"/></marker>
+    <marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--d-green)"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="840" rx="18" fill="var(--d-frame)"/>
+  <rect x="16" y="16" width="1068" height="808" rx="14" fill="var(--d-plate)"/>
+  <path d="M30 16H1070a14 14 0 0 1 14 14v-6H16v6a14 14 0 0 1 14-14z" fill="var(--d-purple)"/>
+  <rect x="16" y="16" width="1068" height="7" rx="3" fill="var(--d-purple)"/>
+
+  <text x="56" y="68" font-size="26" font-weight="700" fill="var(--d-ink)">OneTap Notes: a domain-adapted, multilingual voice-notes pipeline</text>
+  <text x="56" y="96" font-size="14" fill="var(--d-quiet)">Meetings in, speaker-attributed notes and translations out, about a minute after recording stops.</text>
+
+  <rect x="56" y="116" width="988" height="50" rx="10" fill="var(--d-orange-tint)" stroke="var(--d-orange-edge)"/>
+  <text x="74" y="146" font-size="14" font-weight="700" fill="var(--d-orange)">4 use cases</text>
+  <g font-size="12.5" font-weight="600" fill="var(--d-ink)" text-anchor="middle">
+    <rect x="166" y="127" width="150" height="28" rx="14" fill="var(--d-box)" stroke="var(--d-orange-edge)"/><text x="241" y="145">Church &amp; community</text>
+    <rect x="328" y="127" width="124" height="28" rx="14" fill="var(--d-box)" stroke="var(--d-orange-edge)"/><text x="390" y="145">Work meetings</text>
+    <rect x="464" y="127" width="146" height="28" rx="14" fill="var(--d-box)" stroke="var(--d-orange-edge)"/><text x="537" y="145">Classes &amp; lectures</text>
+    <rect x="622" y="127" width="172" height="28" rx="14" fill="var(--d-box)" stroke="var(--d-orange-edge)"/><text x="708" y="145">School &amp; family events</text>
+  </g>
+  <text x="812" y="138" font-size="11.5" fill="var(--d-orange)">picked at onboarding; selects the</text>
+  <text x="812" y="153" font-size="11.5" fill="var(--d-orange)">vocabulary used for every recording</text>
+  <path d="M571 166V186" stroke="var(--d-ink)" stroke-width="1.4" marker-end="url(#a-dark)"/>
+
+  <g text-anchor="middle">
+    <rect x="56" y="188" width="165" height="170" rx="12" fill="var(--d-box)" stroke="var(--d-edge)"/>
+    <text x="138" y="215" font-size="15" font-weight="700" fill="var(--d-ink)">1 · Capture</text>
+    <text x="138" y="241" font-size="12" fill="var(--d-ink)">iPhone · Android</text>
+    <text x="138" y="257" font-size="12" fill="var(--d-ink)">Wear OS · web</text>
+    <text x="138" y="281" font-size="12" fill="var(--d-ink)">one tap, screen locked</text>
+    <text x="138" y="297" font-size="12" fill="var(--d-ink)">idempotent upload queue</text>
+    <text x="138" y="338" font-size="11" fill="var(--d-quiet)">participant names as hints</text>
+
+    <rect x="241" y="188" width="165" height="170" rx="12" fill="var(--d-box)" stroke="var(--d-edge)"/>
+    <text x="323" y="215" font-size="15" font-weight="700" fill="var(--d-ink)">2 · Preprocess</text>
+    <text x="323" y="241" font-size="12" fill="var(--d-ink)">ffprobe allow-list</text>
+    <text x="323" y="257" font-size="12" fill="var(--d-ink)">16 kHz mono</text>
+    <text x="323" y="281" font-size="12" fill="var(--d-ink)">silence trimming</text>
+    <text x="323" y="297" font-size="12" fill="var(--d-ink)">no denoising (hurts ASR)</text>
+    <text x="323" y="338" font-size="11" fill="var(--d-quiet)">under 0.5 s of speech: not billed</text>
+
+    <rect x="426" y="188" width="290" height="170" rx="12" fill="var(--d-purple-tint)" stroke="var(--d-purple)" stroke-width="2"/>
+    <text x="571" y="214" font-size="15" font-weight="700" fill="var(--d-purple)">3 · Domain-adapted ASR</text>
+    <g font-size="12" font-weight="600" fill="var(--d-ink)">
+      <rect x="440" y="226" width="122" height="30" rx="15" fill="var(--d-box)" stroke="var(--d-purple)"/><text x="501" y="245">context biasing</text>
+      <rect x="580" y="226" width="122" height="30" rx="15" fill="var(--d-box)" stroke="var(--d-purple)"/><text x="641" y="245">Soniox + diarization</text>
+      <rect x="440" y="276" width="122" height="30" rx="15" fill="var(--d-box)" stroke="var(--d-purple)"/><text x="501" y="295">jamo / pinyin fix</text>
+      <rect x="580" y="276" width="122" height="30" rx="15" fill="var(--d-orange-tint)" stroke="var(--d-orange)" stroke-width="1.6"/><text x="641" y="295">LLM edits + verifier</text>
+    </g>
+    <path d="M562 241H578" stroke="var(--d-purple)" stroke-width="1.4" marker-end="url(#a-purple)"/>
+    <path d="M641 256V266H501V274" fill="none" stroke="var(--d-purple)" stroke-width="1.4" marker-end="url(#a-purple)"/>
+    <path d="M562 291H578" stroke="var(--d-purple)" stroke-width="1.4" marker-end="url(#a-purple)"/>
+    <text x="501" y="325" font-size="11" fill="var(--d-quiet)">↺ fallback: Groq Whisper</text>
+    <text x="641" y="325" font-size="11" fill="var(--d-quiet)">must sound alike</text>
+    <text x="571" y="345" font-size="11" fill="var(--d-quiet)">Korean jamo · Chinese pinyin · digits locked</text>
+
+    <rect x="736" y="188" width="144" height="170" rx="12" fill="var(--d-box)" stroke="var(--d-edge)"/>
+    <text x="808" y="215" font-size="15" font-weight="700" fill="var(--d-ink)">4 · Notes</text>
+    <text x="808" y="241" font-size="12" fill="var(--d-ink)">Groq gpt-oss-120b</text>
+    <text x="808" y="257" font-size="12" fill="var(--d-ink)">JSON-schema notes</text>
+    <text x="808" y="281" font-size="12" fill="var(--d-ink)">owner grounding</text>
+    <text x="808" y="297" font-size="12" fill="var(--d-ink)">translation, 6 languages</text>
+    <text x="808" y="338" font-size="11" fill="var(--d-quiet)">decisions · tasks · owners</text>
+
+    <rect x="900" y="188" width="144" height="170" rx="12" fill="var(--d-box)" stroke="var(--d-red)" stroke-width="1.6"/>
+    <text x="972" y="215" font-size="15" font-weight="700" fill="var(--d-ink)">5 · Deliver</text>
+    <text x="972" y="241" font-size="12" fill="var(--d-ink)">bilingual email</text>
+    <text x="972" y="257" font-size="12" fill="var(--d-ink)">(Resend)</text>
+    <text x="972" y="281" font-size="12" fill="var(--d-ink)">verified address only</text>
+    <text x="972" y="297" font-size="12" fill="var(--d-ink)">synced to all devices</text>
+    <text x="972" y="338" font-size="11" fill="var(--d-quiet)">30-day server retention</text>
+  </g>
+  <g stroke="var(--d-ink)" stroke-width="1.4">
+    <path d="M221 273H239" marker-end="url(#a-dark)"/>
+    <path d="M406 273H424" marker-end="url(#a-dark)"/>
+    <path d="M716 273H734" marker-end="url(#a-dark)"/>
+    <path d="M880 273H898" marker-end="url(#a-dark)"/>
+  </g>
+
+  <rect x="56" y="384" width="450" height="134" rx="12" fill="var(--d-box)" stroke="var(--d-edge)"/>
+  <text x="76" y="413" font-size="15" font-weight="700" fill="var(--d-ink)">Production: verified and unattended</text>
+  <text x="76" y="439" font-size="12" fill="var(--d-ink)">Sign in with Apple / Google (JWKS) · rotating refresh tokens</text>
+  <text x="76" y="457" font-size="12" fill="var(--d-ink)">App Store + Play receipts verified server-side · signed webhooks</text>
+  <text x="76" y="475" font-size="12" fill="var(--d-ink)">fallbacks logged · health-checked deploys with auto-rollback</text>
+  <text x="76" y="502" font-size="11" fill="var(--d-quiet)">GitHub Actions CI/CD for 4 platforms · 81 automated tests · ~$0.11 per meeting hour</text>
+
+  <rect x="560" y="384" width="330" height="138" rx="12" fill="var(--d-green-tint)" stroke="var(--d-green)" stroke-width="1.6"/>
+  <text x="580" y="413" font-size="15" font-weight="700" fill="var(--d-green)">Phonetic verifier, built in-house</text>
+  <text x="580" y="439" font-size="12" fill="var(--d-ink)">LLM proposes span edits, never a rewrite</text>
+  <text x="580" y="457" font-size="12" fill="var(--d-ink)">applied only if it sounds alike (distance ≤ 0.35)</text>
+  <text x="580" y="475" font-size="12" fill="var(--d-ink)">source must exist · digits must match</text>
+  <text x="580" y="503" font-size="12" font-weight="700" fill="var(--d-green)">keeps LLM correction from inventing words</text>
+  <path d="M641 384V362" stroke="var(--d-green)" stroke-width="1.6" marker-end="url(#a-green)"/>
+
+  <path d="M533 556V364" stroke="var(--d-purple)" stroke-width="1.4" stroke-dasharray="5 5" fill="none" marker-end="url(#a-purple)"/>
+  <text x="542" y="546" font-size="11" fill="var(--d-purple)">learnings</text>
+
+  <path d="M1044 273H1064V628H1046" fill="none" stroke="var(--d-ink)" stroke-width="1.4" marker-end="url(#a-dark)"/>
+  <text x="1074" y="420" font-size="11" fill="var(--d-quiet)" transform="rotate(90 1074 420)">transcripts &amp; notes scored</text>
+
+  <rect x="56" y="556" width="988" height="146" rx="12" fill="var(--d-box)" stroke="var(--d-purple)" stroke-width="1.6"/>
+  <text x="76" y="585" font-size="15" font-weight="700" fill="var(--d-purple)">6 · Evaluation harness: every engine × correction chain</text>
+  <text x="76" y="611" font-size="12" fill="var(--d-ink)">14 synthesized meetings, 6 languages, one voice per speaker</text>
+  <text x="76" y="629" font-size="12" fill="var(--d-ink)">→ CER after number folding (120만 원 = 1,200,000원)</text>
+  <text x="76" y="647" font-size="12" fill="var(--d-ink)">→ summary facts, action-item owners, hallucination checks</text>
+  <text x="76" y="682" font-size="11" fill="var(--d-quiet)">transcripts cached · LLM chains repeated to separate effect from noise</text>
+
+  <line x1="516" y1="574" x2="516" y2="686" stroke="var(--d-edge)"/>
+  <text x="536" y="585" font-size="11" font-weight="700" letter-spacing="0.06em" fill="var(--d-purple)">EXAMPLE FINDING → SHIPPED DECISION</text>
+  <text x="536" y="621" font-size="24" font-weight="700" fill="var(--d-purple)">6.5%</text>
+  <text x="608" y="618" font-size="12" fill="var(--d-ink)">Korean CER on Soniox</text>
+  <text x="536" y="654" font-size="24" font-weight="700" fill="var(--d-red)">10.3%</text>
+  <text x="608" y="651" font-size="12" fill="var(--d-ink)">same audio on Groq Whisper</text>
+  <text x="536" y="684" font-size="12" font-weight="700" fill="var(--d-ink)">→ Soniox is the default, Whisper the fallback</text>
+
+  <line x1="836" y1="574" x2="836" y2="686" stroke="var(--d-edge)"/>
+  <text x="856" y="596" font-size="12" fill="var(--d-ink)">also measured:</text>
+  <text x="856" y="620" font-size="12" fill="var(--d-ink)">use-case vocabulary,</text>
+  <text x="856" y="636" font-size="12" fill="var(--d-ink)">Korean lecture CER</text>
+  <text x="856" y="658" font-size="13" font-weight="700" fill="var(--d-ink)">4.0% → 2.9%</text>
+  <text x="856" y="682" font-size="12" font-weight="700" fill="var(--d-ink)">owners 11/21 → 15/21</text>
+
+  <rect x="56" y="722" width="988" height="40" rx="8" fill="var(--d-dark)"/>
+  <text x="76" y="747" font-size="12.5" fill="#ffffff"><tspan font-weight="700">Hybrid models:</tspan>  Soniox: ASR, diarization, context biasing · Groq: gpt-oss-120b notes, Whisper fallback · whisper.cpp + Ollama: local fallback · FunASR: open baselines</text>
+
+  <text x="56" y="800" font-size="14" font-weight="700" fill="var(--d-ink)">14 eval meetings · 6 languages</text>
+  <text x="300" y="800" font-size="13" fill="var(--d-quiet)">pre-launch · iPhone · Android · Wear OS · web</text>
+  <text x="1044" y="800" font-size="13" fill="var(--d-quiet)" text-anchor="end">Peace Cho · Soniox · Groq · FastAPI · Swift · Kotlin</text>
+</svg>
+</figure>
+<p class="caption">Scroll sideways on a narrow screen to see the whole diagram.</p>
+
+<section>
+  <h2>The six stages</h2>
+  <div class="steps">
+    <div class="card"><h3><span>1</span>Capture</h3><p>One tap records on iPhone, Android, Wear OS or the web, even with the screen locked. Uploads queue in the background with idempotency keys, so a retry never processes a meeting twice. Optional participant names travel with the audio.</p></div>
+    <div class="card"><h3><span>2</span>Preprocess</h3><p>Files are identified by content, not extension, then converted to 16 kHz mono and trimmed of long silences. There is deliberately no denoising: recent studies show it makes modern ASR less accurate.</p></div>
+    <div class="card"><h3><span>3</span>Domain-adapted ASR</h3><p>The use case's vocabulary and the participant names bias Soniox, which also separates speakers. Korean and Chinese text then gets dictionary sound-alike fixes and optional LLM span edits, each checked by the phonetic verifier.</p></div>
+    <div class="card"><h3><span>4</span>Notes</h3><p>gpt-oss-120b on Groq writes key points, decisions, action items and open questions as strict JSON. Speaker labels tie tasks to people, and an owner is kept only if the transcript or the typed names support it. Notes are translated into the chosen language.</p></div>
+    <div class="card"><h3><span>5</span>Deliver</h3><p>A bilingual email goes only to the address the sign-in provider verified, and notes sync to every device. Audio is deleted right after processing; transcripts leave the server after 30 days.</p></div>
+    <div class="card"><h3><span>6</span>Evaluation</h3><p>A harness runs every engine through every correction chain on 14 synthesized meetings and scores character error rate, facts, owners and hallucinations. Its findings chose the default engine and caught two bugs before release.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>OneTap Notes is in pre-launch. All numbers come from a reproducible evaluation harness on synthesized meetings.</p>
+  <p><a href="./">Peace Media home</a> · <a href="privacy.html">Privacy Policy and Terms of Use</a></p>
+  <p>© 2026 Peace Media · Contact: <a href="mailto:peace2reel@gmail.com">peace2reel@gmail.com</a></p>
+</footer>
+</div></body></html>
