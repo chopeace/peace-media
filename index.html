@@ -11,6 +11,7 @@
   <a class="brand" href="./">Peace<span>Media</span></a>
   <ul>
     <li><a href="#work">Work</a></li>
+    <li><a href="#onetap">OneTap Notes</a></li>
     <li><a href="architecture.html">Architecture</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="privacy.html">Privacy</a></li>
@@ -75,6 +76,28 @@
   </div>
 </section>
 
+<section id="onetap">
+  <h2>OneTap Notes</h2>
+  <p class="sub">A second product on the same idea: AI does the work end to end, and every claim is measured.</p>
+  <div class="chan">
+    <div class="card"><span class="tag soon">Pre-launch</span><h3>Multilingual voice notes</h3>
+      <p>One tap records a meeting. About a minute later, a speaker-attributed summary and a translation into your language arrive by email. iOS, Android, Wear OS and the web, with one Python backend.</p>
+      <ul>
+        <li>Four speech engines benchmarked on our own evaluation set (14 meetings, 6 languages). Soniox cut Korean character error rate from 10.3% to 6.5% versus Whisper.</li>
+        <li>Speaker diarization raised correct action-item owners from 11/21 to 15/21.</li>
+        <li>About $0.11 of API cost per meeting hour.</li>
+      </ul></div>
+    <div class="card"><span class="tag live">Running</span><h3>Unattended delivery pipeline</h3>
+      <p>GitHub Actions ships every platform without manual steps.</p>
+      <ul>
+        <li>iOS to TestFlight through the App Store Connect API.</li>
+        <li>Android and Wear OS to Google Play tracks; web to Cloudflare Pages.</li>
+        <li>Backend deploys are health-checked and roll back automatically.</li>
+        <li>Secret scanning, 81 automated tests and a weekly model-quality eval.</li>
+      </ul></div>
+  </div>
+</section>
+
 <section id="about">
   <h2>About</h2>
   <div class="profile">
@@ -84,7 +107,7 @@
       <p class="role">Software engineer · iOS → applied AI</p>
       <ul>
         <li>Designed and runs the agentic pipeline behind Peace Media: agents, avatar engine, analytics.</li>
-        <li>iOS and watchOS apps with on-device and local AI (Swift, SwiftUI, whisper.cpp, Ollama).</li>
+        <li>Built OneTap Notes end to end: iOS, Android, Wear OS, web and backend, shipped by unattended GitHub Actions pipelines.</li>
         <li>LLM fine-tuning: Qwen2.5 with QLoRA for news-style research briefings.</li>
         <li>Earlier: Bosch Research (Palo Alto), ATR (Kyoto); B.Sc. Computing Science, Simon Fraser University.</li>
       </ul>
