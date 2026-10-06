@@ -1,9 +1,9 @@
 // Site menu, shared by every page. To add a project: add one entry to PROJECTS
-// and create its page (copy onetap.html as a template). With more than
+// and create its page (copy ai-briefing.html as a template), or link to its own site. With more than
 // MAX_INLINE projects, they collapse into a "Projects" dropdown.
 const PROJECTS = [
   { name: "Peace AI Briefing", href: "ai-briefing.html" },
-  { name: "OneTap Notes", href: "onetap.html" },
+  { name: "PeaceLingo", href: "https://peacelingo.com/" },
 ];
 const MAX_INLINE = 3;
 

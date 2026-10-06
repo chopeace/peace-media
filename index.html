@@ -5,13 +5,14 @@
 <meta property="og:description" content="New AI papers in, fact-checked explainer videos out, made with LangGraph agents, a custom avatar engine and an analytics feedback loop.">
 <meta property="og:image" content="https://chopeace.github.io/peace-media/architecture-thumb.png">
 <link rel="stylesheet" href="style.css">
-</head><body><div class="wrap">
+</head><body data-product="peacemedia"><div class="wrap">
 
-<nav class="nav" id="site-nav" aria-label="Main">
+<nav class="nav" id="site-nav" aria-label="Main" data-lab="switcher">
   <a class="brand" href="./">Peace<span>Media</span></a>
-  <ul><li><a href="ai-briefing.html">Peace AI Briefing</a></li><li><a href="onetap.html">OneTap Notes</a></li><li><a href="./#about">About</a></li><li><a href="privacy.html">Privacy</a></li></ul>
+  <ul><li><a href="ai-briefing.html">Peace AI Briefing</a></li><li><a href="https://peacelingo.com/">PeaceLingo</a></li><li><a href="./#about">About</a></li><li><a href="privacy.html">Privacy</a></li></ul>
 </nav>
 <script src="nav.js"></script>
+<script src="lab.js"></script>
 
 <header class="hero">
   <span class="eyebrow">AI explainer studio</span>
@@ -71,10 +72,10 @@
   </div>
 </section>
 
-<section id="onetap">
-  <h2>OneTap Notes</h2>
+<section id="peacelingo">
+  <h2>PeaceLingo</h2>
   <p class="sub">A second product on the same idea: AI does the work end to end, and every claim is measured.</p>
-  <p style="margin:-10px 0 22px"><a class="btn" href="onetap.html">See the OneTap Notes architecture →</a></p>
+  <p style="margin:-10px 0 22px"><a class="btn" href="https://peacelingo.com/">Visit peacelingo.com →</a> <a class="btn" href="https://peacelingo.com/architecture">See the architecture →</a></p>
   <div class="chan">
     <div class="card"><span class="tag soon">Pre-launch</span><h3>Multilingual voice notes</h3>
       <p>One tap records a meeting. About a minute later, a speaker-attributed summary and a translation into your language arrive by email. iOS, Android, Wear OS and the web, with one Python backend.</p>
@@ -103,7 +104,7 @@
       <p class="role">Software engineer · iOS → applied AI</p>
       <ul>
         <li>Designed and runs the agentic pipeline behind Peace Media: agents, avatar engine, analytics.</li>
-        <li>Built OneTap Notes end to end: iOS, Android, Wear OS, web and backend, shipped by unattended GitHub Actions pipelines.</li>
+        <li>Built <a href="https://peacelingo.com/">PeaceLingo</a> end to end: iOS, Android, Wear OS, web and backend, shipped by unattended GitHub Actions pipelines.</li>
         <li>LLM fine-tuning: Qwen2.5 with QLoRA for news-style research briefings.</li>
         <li>Earlier: Bosch Research (Palo Alto), ATR (Kyoto); B.Sc. Computing Science, Simon Fraser University.</li>
       </ul>

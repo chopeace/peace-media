@@ -127,3 +127,26 @@ h1,.lede,.sub{overflow-wrap:anywhere}
   min-width:210px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
 .nav .menu ul a{display:block;padding:8px 10px;border-radius:8px}
 .nav .menu ul a:hover{background:var(--accent-soft)}
+
+/* Peace Lab product switcher (lab.js, shared with peacelingo.com): "Peace Lab ▾" next to the logo. */
+.nav-left{display:flex;align-items:center;gap:10px}
+.switcher{position:relative}
+.switcher summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;
+  color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 10px 3px 8px;background:var(--surface)}
+.switcher summary::-webkit-details-marker{display:none}
+.switcher summary::before{content:"";width:12px;height:12px;flex:none;
+  background:radial-gradient(circle,currentColor 1.6px,transparent 1.8px) 0 0/6px 6px}
+.switcher summary::after{content:"▾";font-size:11px}
+.switcher[open] summary{color:var(--ink);border-color:var(--accent)}
+.nav .panel{position:absolute;left:0;top:calc(100% + 10px);z-index:20;width:min(320px,calc(100vw - 32px));padding:8px;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.14)}
+.nav .panel-h{margin:4px 10px 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.nav .panel ul{display:grid;gap:2px;list-style:none;margin:0;padding:0}
+.nav .panel a{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:inherit}
+.nav .panel a:hover,.nav .panel a[aria-current]{background:var(--accent-soft);color:var(--ink)}
+.nav .panel .dot{width:12px;height:12px;border-radius:4px;margin-top:6px;flex:none}
+.nav .panel .app-icon{width:28px;height:28px;border-radius:22%;flex:none;margin-top:2px;display:inline}
+.nav .panel b{font-size:15px}
+.nav .panel small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.nav .pill{font-size:11px;font-weight:700;padding:1px 7px;border-radius:99px;background:var(--accent-soft);color:var(--accent);margin-left:4px}
+@media (max-width:560px){.nav .panel{position:fixed;left:16px;right:16px;top:64px;width:auto}}
